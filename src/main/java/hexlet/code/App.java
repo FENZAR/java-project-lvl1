@@ -1,6 +1,11 @@
 package hexlet.code;
 
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+
 import java.util.Scanner;
+
+import static hexlet.code.Engine.getGreeting;
 
 public class App {
     public static void main(String[] args) {
@@ -13,8 +18,9 @@ public class App {
         System.out.println("Your choice: " + choice);
 
         switch (choice) {
-            case 1 -> Cli.getGreeting();
+            case 1 -> getGreeting();
             case 2 -> Even.executeEvenGame();
+            case 3 -> Calc.executeCalcGame();
             default -> System.out.println("Exit");
         }
     }

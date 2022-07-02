@@ -1,18 +1,20 @@
-package hexlet.code;
+package hexlet.code.games;
+
+import hexlet.code.Engine;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class Even {
+public class Even extends Engine {
     private static final String YES = "yes";
     private static final String NO = "no";
     private static final int MAX_VALUE = 1001;
-    private static final int WIN_COUNT = 3;
+
     public static void executeEvenGame() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         int successAnswers = 0;
-        String userName = Cli.getGreeting();
+        String userName = getGreeting();
         String letsTryAgainName = "Let's try again, " + userName + "!";
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
 
