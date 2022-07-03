@@ -14,8 +14,7 @@ public class Even extends Engine {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         int successAnswers = 0;
-        String userName = getGreeting();
-        String letsTryAgainName = "Let's try again, " + userName + "!";
+        getGreeting();
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
 
         while (successAnswers < WIN_COUNT) {
@@ -26,30 +25,27 @@ public class Even extends Engine {
             String answer = sc.nextLine().toLowerCase();
             boolean isNegativeAnswer = NO.equals(answer);
             boolean isPositiveAnswer = YES.equals(answer);
+
             if (!isNegativeAnswer && !isPositiveAnswer) {
                 System.out.println("'" + answer + "' is wrong answer ;(. Expected answer was 'yes' or 'no'.");
-                System.out.println(letsTryAgainName);
-                return;
+                break;
             }
 
             if (isEven) {
                 if (isNegativeAnswer) {
                     System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'.");
-                    System.out.println(letsTryAgainName);
-                    return;
+                    break;
                 }
             } else {
                 if (isPositiveAnswer) {
                     System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.");
-                    System.out.println(letsTryAgainName);
-                    return;
+                    break;
                 }
             }
             System.out.println("Correct!");
             successAnswers++;
         }
-        if (successAnswers == WIN_COUNT) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+
+        System.out.println(successAnswers == WIN_COUNT ? getCongratulations() : getLetsTryAgainMessage());
     }
 }
