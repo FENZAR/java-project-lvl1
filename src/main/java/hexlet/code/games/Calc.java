@@ -9,8 +9,6 @@ import java.util.Scanner;
 
 public class Calc extends Engine {
 
-    private static final int MAX_VALUE = 101;
-
     public static void executeCalcGame() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
@@ -33,7 +31,7 @@ public class Calc extends Engine {
             int result = (int) expression.evaluate();
 
             System.out.print("Your answer: ");
-            int answer = 0;
+            int answer;
             if (sc.hasNextInt()) {
                 answer = sc.nextInt();
             } else {
@@ -49,7 +47,6 @@ public class Calc extends Engine {
                 break;
             }
         }
-
-        System.out.println(successAnswers == WIN_COUNT ? getCongratulations() : getLetsTryAgainMessage());
+        printResultMessage(successAnswers);
     }
 }
