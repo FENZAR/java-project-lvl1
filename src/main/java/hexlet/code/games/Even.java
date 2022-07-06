@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Even extends Engine {
     private static final String YES = "yes";
     private static final String NO = "no";
-    private static final int MAX_VALUE = 1001;
 
     public static void executeEvenGame() {
         Scanner sc = new Scanner(System.in);
@@ -45,7 +44,6 @@ public class Even extends Engine {
             System.out.println("Correct!");
             successAnswers++;
         }
-
-        System.out.println(successAnswers == WIN_COUNT ? getCongratulations() : getLetsTryAgainMessage());
+        printResultMessage(successAnswers);
     }
 }
