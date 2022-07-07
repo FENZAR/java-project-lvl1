@@ -38,11 +38,13 @@ public class Gcd extends Engine {
             } else {
                 mod2 = mod1;
                 mod1 = min;
-                while (mod1 % mod2 > 0) {
-                    mod2 = mod1;
+                int mod = mod1 % mod2;
+                while (mod > 0) {
                     mod1 = mod2;
+                    mod2 = mod;
+                    mod = mod1 % mod2;
                 }
-                result = mod1;
+                result = mod2;
             }
 
             System.out.println("Question: " + randInt1 + " " + randInt2);
