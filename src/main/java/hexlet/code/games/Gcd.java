@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Gcd extends Engine {
 
-    public static void executeGcdGame() {
+    public static void execute() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         int successAnswers = 0;

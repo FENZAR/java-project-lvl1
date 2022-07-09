@@ -9,7 +9,7 @@ public class Even extends Engine {
     private static final String YES = "yes";
     private static final String NO = "no";
 
-    public static void executeEvenGame() {
+    public static void execute() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         int successAnswers = 0;

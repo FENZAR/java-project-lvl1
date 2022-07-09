@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Calc extends Engine {
 
-    public static void executeCalcGame() {
+    public static void execute() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         int successAnswers = 0;
