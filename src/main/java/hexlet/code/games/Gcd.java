@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Gcd extends Engine {
 
     public static void execute() {
-        Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         int successAnswers = 0;
         int randInt1;
@@ -24,13 +23,8 @@ public class Gcd extends Engine {
             randInt1 = rand.nextInt(MAX_VALUE);
             randInt2 = rand.nextInt(MAX_VALUE);
 
-            if (randInt1 < randInt2) {
-                min = randInt1;
-                max = randInt2;
-            } else {
-                min = randInt2;
-                max = randInt1;
-            }
+            min = Math.min(randInt1, randInt2);
+            max = Math.max(randInt1, randInt2);
 
             mod1 = max % min;
             if (mod1 == 0) {
@@ -49,14 +43,7 @@ public class Gcd extends Engine {
 
             System.out.println("Question: " + randInt1 + " " + randInt2);
             System.out.print("Your answer: ");
-            int answer;
-            if (sc.hasNextInt()) {
-                answer = sc.nextInt();
-            } else {
-                printWrongAnswer(sc.next(), Integer.toString(result));
-                break;
-            }
-
+            int answer = getIntAnswer(result);
             if (result == answer) {
                 successAnswers++;
                 System.out.println("Correct!");

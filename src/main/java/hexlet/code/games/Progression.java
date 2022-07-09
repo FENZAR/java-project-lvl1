@@ -9,7 +9,6 @@ public class Progression extends Engine {
     private static final int COUNT_ELEMENTS = 10;
 
     public static void execute() {
-        Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         int successAnswers = 0;
         int countElements = COUNT_ELEMENTS;
@@ -41,14 +40,7 @@ public class Progression extends Engine {
             }
             System.out.println("Question: " + stringBuilder);
             System.out.print("Your answer: ");
-            int answer;
-            if (sc.hasNextInt()) {
-                answer = sc.nextInt();
-            } else {
-                printWrongAnswer(sc.next(), Integer.toString(hiddenElement));
-                break;
-            }
-
+            int answer = getIntAnswer(hiddenElement);
             if (hiddenElement == answer) {
                 successAnswers++;
                 System.out.println("Correct!");

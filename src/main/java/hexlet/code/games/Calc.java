@@ -31,19 +31,12 @@ public class Calc extends Engine {
             int result = (int) expression.evaluate();
 
             System.out.print("Your answer: ");
-            int answer;
-            if (sc.hasNextInt()) {
-                answer = sc.nextInt();
-            } else {
-                System.out.println(sc.next() + " is wrong answer ;(. Correct answer was " + result);
-                break;
-            }
-
+            int answer = getIntAnswer(result);
             if (result == answer) {
                 successAnswers++;
                 System.out.println("Correct!");
             } else {
-                System.out.println("" + answer + " is wrong answer ;(. Correct answer was " + result);
+                printWrongAnswer(Integer.toString(answer), Integer.toString(result));
                 break;
             }
         }

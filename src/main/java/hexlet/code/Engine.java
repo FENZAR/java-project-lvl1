@@ -28,7 +28,16 @@ public class Engine {
         System.out.println(actual + " is wrong answer ;(. Correct answer was " + result);
     }
 
-    public static void getGreeting() {
+    protected static int getIntAnswer(int expected) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) {
+            printWrongAnswer(sc.next(), Integer.toString(expected));
+            return Integer.MIN_VALUE;
+        }
+        return sc.nextInt();
+    }
+
+    protected static void getGreeting() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
