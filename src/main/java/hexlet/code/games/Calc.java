@@ -1,13 +1,19 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class Calc extends Engine {
+import static hexlet.code.Engine.getGreeting;
+import static hexlet.code.Engine.getIntAnswer;
+import static hexlet.code.Engine.printWrongAnswer;
+import static hexlet.code.Engine.printResultMessage;
+import static hexlet.code.Engine.WIN_COUNT;
+import static hexlet.code.Engine.MAX_VALUE;
+
+public class Calc {
 
     public static void execute() {
         Scanner sc = new Scanner(System.in);

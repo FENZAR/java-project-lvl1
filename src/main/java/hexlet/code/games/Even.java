@@ -1,11 +1,16 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
-
 import java.util.Random;
 import java.util.Scanner;
 
-public class Even extends Engine {
+import static hexlet.code.Engine.getGreeting;
+import static hexlet.code.Engine.printResultMessage;
+import static hexlet.code.Engine.WIN_COUNT;
+import static hexlet.code.Engine.MAX_VALUE;
+import static hexlet.code.Engine.YES;
+import static hexlet.code.Engine.NO;
+
+public class Even {
 
     public static void execute() {
         Scanner sc = new Scanner(System.in);

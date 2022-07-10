@@ -3,10 +3,10 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    protected static final int WIN_COUNT = 3;
-    protected static final int MAX_VALUE = 100;
-    protected static final String YES = "yes";
-    protected static final String NO = "no";
+    public static final int WIN_COUNT = 3;
+    public static final int MAX_VALUE = 100;
+    public static final String YES = "yes";
+    public static final String NO = "no";
 
     private static String userName;
 
@@ -22,15 +22,15 @@ public class Engine {
         return "Congratulations, " + userName + "!";
     }
 
-    protected static void printResultMessage(int successAnswers) {
+    public static void printResultMessage(int successAnswers) {
         System.out.println(successAnswers == WIN_COUNT ? getCongratulations() : getLetsTryAgainMessage());
     }
 
-    protected static void printWrongAnswer(String actual, String result) {
+    public static void printWrongAnswer(String actual, String result) {
         System.out.println(actual + " is wrong answer ;(. Correct answer was " + result);
     }
 
-    protected static int getIntAnswer(int expected) {
+    public static int getIntAnswer(int expected) {
         Scanner sc = new Scanner(System.in);
         if (!sc.hasNextInt()) {
             printWrongAnswer(sc.next(), Integer.toString(expected));
@@ -39,7 +39,7 @@ public class Engine {
         return sc.nextInt();
     }
 
-    protected static void getGreeting() {
+    public static void getGreeting() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");

@@ -3,7 +3,14 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import java.util.Random;
 
-public class Gcd extends Engine {
+import static hexlet.code.Engine.getGreeting;
+import static hexlet.code.Engine.getIntAnswer;
+import static hexlet.code.Engine.printWrongAnswer;
+import static hexlet.code.Engine.printResultMessage;
+import static hexlet.code.Engine.WIN_COUNT;
+import static hexlet.code.Engine.MAX_VALUE;
+
+public class Gcd {
 
     public static void execute() {
         Random rand = new Random();
