@@ -19,15 +19,15 @@ public class App {
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
         System.out.println("0 - Exit");
-        int choice = sc.nextInt();
+        var choice = sc.next();
         System.out.println("Your choice: " + choice);
 
         switch (choice) {
-            case 1 -> getGreeting();
-            case 2 -> Even.execute();
-            case 3 -> Calc.execute();
-            case 4 -> Gcd.execute();
-            case 5 -> Progression.execute();
+            case "1" -> getGreeting();
+            case "2" -> Even.execute();
+            case "3" -> Calc.execute();
+            case "4" -> Gcd.execute();
+            case "5" -> Progression.execute();
             default -> System.out.println("Exit");
         }
     }

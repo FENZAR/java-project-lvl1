@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Engine {
     protected static final int WIN_COUNT = 3;
     protected static final int MAX_VALUE = 100;
+    protected static final String YES = "yes";
+    protected static final String NO = "no";
 
     private static String userName;
 

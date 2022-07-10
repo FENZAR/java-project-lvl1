@@ -1,9 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
 import java.util.Random;
-import java.util.Scanner;
 
 public class Progression extends Engine {
     private static final int COUNT_ELEMENTS = 10;
