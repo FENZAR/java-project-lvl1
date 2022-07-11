@@ -8,6 +8,7 @@ import static hexlet.code.Engine.printWrongAnswer;
 import static hexlet.code.Engine.printResultMessage;
 import static hexlet.code.Engine.WIN_COUNT;
 import static hexlet.code.Engine.MAX_VALUE;
+
 public class Progression {
     private static final int COUNT_ELEMENTS = 10;
 
