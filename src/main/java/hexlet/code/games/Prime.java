@@ -13,6 +13,7 @@ import static hexlet.code.Engine.NO;
 public class Prime {
 
     private static final int MIN_PRIME_NUMBER = 2;
+
     public static void execute() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();

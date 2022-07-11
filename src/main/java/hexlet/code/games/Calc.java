@@ -31,7 +31,7 @@ public class Calc {
             randInt1 = rand.nextInt(MAX_VALUE);
             randInt2 = rand.nextInt(MAX_VALUE);
             operatorIndex = rand.nextInt(operator.length);
-            String stringExpression = "" + randInt1 + operator[operatorIndex] + randInt2;
+            String stringExpression = "" + randInt1 + " " + operator[operatorIndex]  + " " + randInt2;
             System.out.println("Question: " + stringExpression);
             Expression expression = new ExpressionBuilder(stringExpression).build();
             int result = (int) expression.evaluate();
