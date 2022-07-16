@@ -8,8 +8,6 @@ import hexlet.code.games.Prime;
 
 import java.util.Scanner;
 
-import static hexlet.code.Engine.getGreeting;
-
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -25,7 +23,7 @@ public class App {
         System.out.println("Your choice: " + choice);
 
         switch (choice) {
-            case "1" -> getGreeting();
+            case "1" -> Cli.getGreeting();
             case "2" -> Even.execute();
             case "3" -> Calc.execute();
             case "4" -> Gcd.execute();

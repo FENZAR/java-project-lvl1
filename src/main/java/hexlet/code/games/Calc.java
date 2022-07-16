@@ -1,12 +1,13 @@
 package hexlet.code.games;
 
+import hexlet.code.User;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import static hexlet.code.Engine.getGreeting;
+import static hexlet.code.Cli.getGreeting;
 import static hexlet.code.Engine.getIntAnswer;
 import static hexlet.code.Engine.printWrongAnswer;
 import static hexlet.code.Engine.printResultMessage;
@@ -23,7 +24,7 @@ public class Calc {
         int randInt2;
         int operatorIndex;
         char[] operator = {'+', '-', '*'};
-        getGreeting();
+        User user = new User(getGreeting());
 
         System.out.println("What is the result of the expression?");
 
@@ -46,6 +47,6 @@ public class Calc {
                 break;
             }
         }
-        printResultMessage(successAnswers);
+        printResultMessage(successAnswers, user);
     }
 }

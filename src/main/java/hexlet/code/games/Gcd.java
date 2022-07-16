@@ -1,8 +1,10 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
+import hexlet.code.User;
+
 import java.util.Random;
 
-import static hexlet.code.Engine.getGreeting;
 import static hexlet.code.Engine.getIntAnswer;
 import static hexlet.code.Engine.printWrongAnswer;
 import static hexlet.code.Engine.printResultMessage;
@@ -21,7 +23,7 @@ public class Gcd {
         int mod1;
         int mod2;
         int result;
-        getGreeting();
+        User user = new User(Cli.getGreeting());
         System.out.println("Find the greatest common divisor of given numbers.");
 
         while (successAnswers < WIN_COUNT) {
@@ -57,6 +59,6 @@ public class Gcd {
                 break;
             }
         }
-        printResultMessage(successAnswers);
+        printResultMessage(successAnswers, user);
     }
 }

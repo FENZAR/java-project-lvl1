@@ -1,8 +1,10 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
+import hexlet.code.User;
+
 import java.util.Random;
 
-import static hexlet.code.Engine.getGreeting;
 import static hexlet.code.Engine.getIntAnswer;
 import static hexlet.code.Engine.printWrongAnswer;
 import static hexlet.code.Engine.printResultMessage;
@@ -20,7 +22,7 @@ public class Progression {
         int step;
         int hiddenIndex;
         int hiddenElement;
-        getGreeting();
+        User user = new User(Cli.getGreeting());
         System.out.println("What number is missing in the progression?");
 
         while (successAnswers < WIN_COUNT) {
@@ -53,6 +55,6 @@ public class Progression {
                 break;
             }
         }
-        printResultMessage(successAnswers);
+        printResultMessage(successAnswers, user);
     }
 }

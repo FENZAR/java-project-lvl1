@@ -1,9 +1,11 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
+import hexlet.code.User;
+
 import java.util.Random;
 import java.util.Scanner;
 
-import static hexlet.code.Engine.getGreeting;
 import static hexlet.code.Engine.printResultMessage;
 import static hexlet.code.Engine.WIN_COUNT;
 import static hexlet.code.Engine.MAX_VALUE;
@@ -20,7 +22,7 @@ public class Prime {
         int successAnswers = 0;
         int randInt;
         boolean isPrime = false;
-        getGreeting();
+        User user = new User(Cli.getGreeting());
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
         while (successAnswers < WIN_COUNT) {
@@ -59,6 +61,6 @@ public class Prime {
             System.out.println("Correct!");
             successAnswers++;
         }
-        printResultMessage(successAnswers);
+        printResultMessage(successAnswers, user);
     }
 }

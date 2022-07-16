@@ -1,9 +1,11 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
+import hexlet.code.User;
+
 import java.util.Random;
 import java.util.Scanner;
 
-import static hexlet.code.Engine.getGreeting;
 import static hexlet.code.Engine.printResultMessage;
 import static hexlet.code.Engine.WIN_COUNT;
 import static hexlet.code.Engine.MAX_VALUE;
@@ -16,7 +18,7 @@ public class Even {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         int successAnswers = 0;
-        getGreeting();
+        User user = new User(Cli.getGreeting());
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
 
         while (successAnswers < WIN_COUNT) {
@@ -47,6 +49,6 @@ public class Even {
             System.out.println("Correct!");
             successAnswers++;
         }
-        printResultMessage(successAnswers);
+        printResultMessage(successAnswers, user);
     }
 }
