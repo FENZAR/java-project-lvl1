@@ -13,6 +13,18 @@ import static hexlet.code.Engine.MAX_VALUE;
 
 public class Gcd {
 
+    private static int getGcd(int mod2, int mod1) {
+        int mod = mod1 % mod2;
+        if (mod != 0) {
+            while (mod > 0) {
+                mod1 = mod2;
+                mod2 = mod;
+                mod = mod1 % mod2;
+            }
+        }
+        return mod2;
+    }
+
     public static void execute() {
         Random rand = new Random();
         int successAnswers = 0;
@@ -20,8 +32,6 @@ public class Gcd {
         int randInt2;
         int min;
         int max;
-        int mod1;
-        int mod2;
         int result;
         User user = new User(Cli.getGreeting());
         System.out.println("Find the greatest common divisor of given numbers.");
@@ -33,20 +43,7 @@ public class Gcd {
             min = Math.min(randInt1, randInt2);
             max = Math.max(randInt1, randInt2);
 
-            mod1 = max % min;
-            if (mod1 == 0) {
-                result = min;
-            } else {
-                mod2 = mod1;
-                mod1 = min;
-                int mod = mod1 % mod2;
-                while (mod > 0) {
-                    mod1 = mod2;
-                    mod2 = mod;
-                    mod = mod1 % mod2;
-                }
-                result = mod2;
-            }
+            result = getGcd(min, max);
 
             System.out.println("Question: " + randInt1 + " " + randInt2);
             System.out.print("Your answer: ");
