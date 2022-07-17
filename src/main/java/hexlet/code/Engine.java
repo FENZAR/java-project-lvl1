@@ -21,16 +21,32 @@ public class Engine {
                 + user.getUserName() + "!");
     }
 
-    public static void printWrongAnswer(String actual, String result) {
-        System.out.println(actual + " is wrong answer ;(. Correct answer was " + result);
+    public static void printWrongAnswer(String actualResult, String expectedResult) {
+        System.out.println(actualResult + " is wrong answer ;(. Correct answer was " + expectedResult);
     }
 
     public static int getIntAnswer(int expected) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Your answer: ");
         if (!sc.hasNextInt()) {
             printWrongAnswer(sc.next(), Integer.toString(expected));
             return Integer.MIN_VALUE;
         }
         return sc.nextInt();
+    }
+
+    public static String getAnswer() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Your answer: ");
+        return sc.nextLine().toLowerCase();
+    }
+
+    public static void printQuestion(String question) {
+        System.out.println("Question: " + question);
+    }
+
+    public static int increaseCount() {
+        System.out.println("Correct!");
+        return 1;
     }
 }

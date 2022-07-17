@@ -5,11 +5,7 @@ import hexlet.code.User;
 
 import java.util.Random;
 
-import static hexlet.code.Engine.getIntAnswer;
-import static hexlet.code.Engine.printWrongAnswer;
-import static hexlet.code.Engine.printResultMessage;
-import static hexlet.code.Engine.WIN_COUNT;
-import static hexlet.code.Engine.MAX_VALUE;
+import static hexlet.code.Engine.*;
 
 public class Gcd {
 
@@ -25,34 +21,30 @@ public class Gcd {
         return mod2;
     }
 
-    public static void execute() {
+    private static int askQuestion() {
         Random rand = new Random();
+        int randInt1 = rand.nextInt(MAX_VALUE);
+        int randInt2 = rand.nextInt(MAX_VALUE);
+        int min = Math.min(randInt1, randInt2);
+        int max = Math.max(randInt1, randInt2);
+        printQuestion(randInt1 + " " + randInt2);
+        return getGcd(min, max);
+    }
+
+    public static void execute() {
         int successAnswers = 0;
-        int randInt1;
-        int randInt2;
-        int min;
-        int max;
-        int result;
         User user = new User(Cli.getGreeting());
         System.out.println("Find the greatest common divisor of given numbers.");
 
         while (successAnswers < WIN_COUNT) {
-            randInt1 = rand.nextInt(MAX_VALUE);
-            randInt2 = rand.nextInt(MAX_VALUE);
+            int expectedResult = askQuestion();
 
-            min = Math.min(randInt1, randInt2);
-            max = Math.max(randInt1, randInt2);
-
-            result = getGcd(min, max);
-
-            System.out.println("Question: " + randInt1 + " " + randInt2);
             System.out.print("Your answer: ");
-            int answer = getIntAnswer(result);
-            if (result == answer) {
-                successAnswers++;
-                System.out.println("Correct!");
+            int actualAnswer = getIntAnswer(expectedResult);
+            if (expectedResult == actualAnswer) {
+                successAnswers += increaseCount();
             } else {
-                printWrongAnswer(Integer.toString(answer), Integer.toString(result));
+                printWrongAnswer(Integer.toString(actualAnswer), Integer.toString(expectedResult));
                 break;
             }
         }
