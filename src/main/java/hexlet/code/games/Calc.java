@@ -5,10 +5,15 @@ import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
 import java.util.Random;
-import java.util.Scanner;
 
 import static hexlet.code.Cli.getGreeting;
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.MAX_VALUE;
+import static hexlet.code.Engine.WIN_COUNT;
+import static hexlet.code.Engine.getIntAnswer;
+import static hexlet.code.Engine.printQuestion;
+import static hexlet.code.Engine.increaseCount;
+import static hexlet.code.Engine.printWrongAnswer;
+import static hexlet.code.Engine.printResultMessage;
 
 public class Calc {
 

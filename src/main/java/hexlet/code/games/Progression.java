@@ -5,7 +5,13 @@ import hexlet.code.User;
 
 import java.util.Random;
 
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.MAX_VALUE;
+import static hexlet.code.Engine.WIN_COUNT;
+import static hexlet.code.Engine.getIntAnswer;
+import static hexlet.code.Engine.printQuestion;
+import static hexlet.code.Engine.increaseCount;
+import static hexlet.code.Engine.printWrongAnswer;
+import static hexlet.code.Engine.printResultMessage;
 
 public class Progression {
     private static final int COUNT_ELEMENTS = 10;
