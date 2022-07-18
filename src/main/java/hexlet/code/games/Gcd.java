@@ -16,13 +16,17 @@ import static hexlet.code.Engine.printResultMessage;
 public class Gcd {
 
     private static int getGcd(int mod2, int mod1) {
-        int mod = mod1 % mod2;
-        if (mod != 0) {
-            while (mod > 0) {
-                mod1 = mod2;
-                mod2 = mod;
-                mod = mod1 % mod2;
+        try {
+            int mod = mod1 % mod2;
+            if (mod != 0) {
+                while (mod > 0) {
+                    mod1 = mod2;
+                    mod2 = mod;
+                    mod = mod1 % mod2;
+                }
             }
+        } catch (ArithmeticException e) {
+            return 0;
         }
         return mod2;
     }
