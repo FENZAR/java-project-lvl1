@@ -28,7 +28,7 @@ public class Prime {
             if (randInt % i == 0) {
                 isPrime = false;
                 break;
-            } else if (i == halfOfRandValue - 1) {
+            } else {
                 isPrime = true;
             }
         }
