@@ -24,11 +24,11 @@ public class App {
 
         switch (choice) {
             case "1" -> Cli.getGreeting();
-            case "2" -> Even.execute();
-            case "3" -> Calc.execute();
-            case "4" -> Gcd.execute();
-            case "5" -> Progression.execute();
-            case "6" -> Prime.execute();
+            case "2" -> Even.startGame();
+            case "3" -> Calc.startGame();
+            case "4" -> Gcd.startGame();
+            case "5" -> Progression.startGame();
+            case "6" -> Prime.startGame();
             default -> System.out.println("Exit");
         }
     }

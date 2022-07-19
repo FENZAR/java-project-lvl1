@@ -1,64 +1,46 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
-import hexlet.code.User;
+import hexlet.code.Engine;
 
 import java.util.Random;
 
-import static hexlet.code.Engine.MAX_VALUE;
-import static hexlet.code.Engine.WIN_COUNT;
-import static hexlet.code.Engine.getIntAnswer;
-import static hexlet.code.Engine.printQuestion;
-import static hexlet.code.Engine.increaseCount;
-import static hexlet.code.Engine.printWrongAnswer;
-import static hexlet.code.Engine.printResultMessage;
+import static hexlet.code.EngineHelper.MAX_VALUE;
+import static hexlet.code.EngineHelper.WIN_COUNT;
 
 public class Progression {
     private static final int COUNT_ELEMENTS = 10;
 
-    private static int askQuestion() {
+    public static void startGame() {
         Random rand = new Random();
-        int countElements = COUNT_ELEMENTS;
-        int firstElement = rand.nextInt(MAX_VALUE);
-        int step = rand.nextInt(COUNT_ELEMENTS) + 1;
-        int hiddenIndex = rand.nextInt(countElements - 1);
-        int[] progression = new int[countElements];
+        String[] results = new String[WIN_COUNT];
+        String[] questions = new String[WIN_COUNT];
 
-        progression[0] = firstElement;
-        for (int i = 1; i < progression.length; i++) {
-            progression[i] = progression[i - 1] + step;
-        }
+        for (int i = 0; i < WIN_COUNT; i++) {
+            int[] progression = new int[COUNT_ELEMENTS];
+            int firstElement = rand.nextInt(MAX_VALUE);
+            int step = rand.nextInt(COUNT_ELEMENTS) + 1;
+            int hiddenIndex = rand.nextInt(COUNT_ELEMENTS - 1);
 
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < progression.length; i++) {
-            if (i == hiddenIndex) {
-                stringBuilder.append("..");
-            } else {
-                stringBuilder.append(progression[i]);
+            progression[0] = firstElement;
+            for (int j = 1; j < progression.length; j++) {
+                progression[j] = progression[j - 1] + step;
             }
-            stringBuilder.append(" ");
-        }
-        printQuestion(stringBuilder.toString());
-        return progression[hiddenIndex];
-    }
 
-    public static void execute() {
-        int successAnswers = 0;
-        User user = new User(Cli.getGreeting());
-        System.out.println("What number is missing in the progression?");
-
-        while (successAnswers < WIN_COUNT) {
-            int expectedResult = askQuestion();
-
-            System.out.print("Your answer: ");
-            int actualAnswer = getIntAnswer(expectedResult);
-            if (expectedResult == actualAnswer) {
-                successAnswers += increaseCount();
-            } else {
-                printWrongAnswer(Integer.toString(actualAnswer), Integer.toString(expectedResult));
-                break;
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int j = 0; j < progression.length; j++) {
+                if (j == hiddenIndex) {
+                    stringBuilder.append("..");
+                } else {
+                    stringBuilder.append(progression[j]);
+                }
+                stringBuilder.append(" ");
             }
+
+            questions[i] = stringBuilder.toString();
+            results[i] = Integer.toString(progression[hiddenIndex]);
         }
-        printResultMessage(successAnswers, user);
+        String rules = "What is the result of the expression?";
+        Engine engine = new Engine(rules, questions, results);
+        engine.execute();
     }
 }

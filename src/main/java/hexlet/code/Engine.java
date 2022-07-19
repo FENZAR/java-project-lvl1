@@ -1,52 +1,42 @@
 package hexlet.code;
 
-import java.util.Scanner;
+import static hexlet.code.EngineHelper.WIN_COUNT;
+import static hexlet.code.EngineHelper.getAnswer;
+import static hexlet.code.EngineHelper.printQuestion;
+import static hexlet.code.EngineHelper.printResultMessage;
+import static hexlet.code.EngineHelper.printWrongAnswer;
 
 public class Engine {
-    public static final int WIN_COUNT = 3;
-    public static final int MAX_VALUE = 100;
-    public static final String YES = "yes";
-    public static final String NO = "no";
+    private final String[] questions;
+    private final String[] expectedResults;
+    private final String gameRules;
 
-    private static String getLetsTryAgainMessage() {
-        return "Let's try again, ";
+    public Engine(String rules, String[] gameQuestions, String[] results) {
+        this.gameRules = rules;
+        this.questions = gameQuestions;
+        this.expectedResults = results;
     }
 
-    private static String getCongratulations() {
-        return "Congratulations, ";
-    }
+    /**
+     * Execute game instance.
+     */
+    public void execute() {
+        int successAnswers = 0;
+        User user = new User(Cli.getGreeting());
+        System.out.println(gameRules);
 
-    public static void printResultMessage(int successAnswers, User user) {
-        System.out.println((successAnswers == WIN_COUNT ? getCongratulations() : getLetsTryAgainMessage())
-                + user.getUserName() + "!");
-    }
+        for (int i = 0; i < WIN_COUNT; i++) {
+            printQuestion(questions[i]);
+            String actualAnswer = getAnswer();
 
-    public static void printWrongAnswer(String actualResult, String expectedResult) {
-        System.out.println(actualResult + " is wrong answer ;(. Correct answer was " + expectedResult);
-    }
-
-    public static int getIntAnswer(int expected) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Your answer: ");
-        if (!sc.hasNextInt()) {
-            printWrongAnswer(sc.next(), Integer.toString(expected));
-            return Integer.MIN_VALUE;
+            if (expectedResults[i].equals(actualAnswer)) {
+                System.out.println("Correct!");
+                successAnswers++;
+            } else {
+                printWrongAnswer(actualAnswer, expectedResults[i]);
+                break;
+            }
         }
-        return sc.nextInt();
-    }
-
-    public static String getAnswer() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Your answer: ");
-        return sc.nextLine().toLowerCase();
-    }
-
-    public static void printQuestion(String question) {
-        System.out.println("Question: " + question);
-    }
-
-    public static int increaseCount() {
-        System.out.println("Correct!");
-        return 1;
+        printResultMessage(successAnswers, user);
     }
 }
