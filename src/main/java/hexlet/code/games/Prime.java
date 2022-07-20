@@ -27,14 +27,13 @@ public class Prime {
     }
 
     private static boolean isPrime(int value) {
-        int halfOfRandValue = value / 2;
         boolean isPrime = false;
-        for (int i = MIN_PRIME_NUMBER; i < halfOfRandValue; i++) {
-            if (value % i == 0) {
+        for (int i = MIN_PRIME_NUMBER; i <= value; i++) {
+            if (i == value) {
+                isPrime = true;
+            } else if (value % i == 0) {
                 isPrime = false;
                 break;
-            } else {
-                isPrime = true;
             }
         }
         return isPrime;
