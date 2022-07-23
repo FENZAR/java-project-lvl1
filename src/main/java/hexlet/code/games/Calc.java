@@ -12,7 +12,7 @@ import static hexlet.code.Engine.getRandValue;
 
 public class Calc {
     private static final String CALC_RULES = "What is the result of the expression?";
-    private static final String EXPRESSION_TEMPLATE = "%d + %s + %d";
+    private static final String EXPRESSION_TEMPLATE = "%d %s %d";
 
     public static void startGame() {
         final char[] operator = {'+', '-', '*'};
