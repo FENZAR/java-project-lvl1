@@ -2,27 +2,24 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Random;
-
-import static hexlet.code.EngineHelper.MAX_VALUE;
-import static hexlet.code.EngineHelper.WIN_COUNT;
-import static hexlet.code.EngineHelper.YES;
-import static hexlet.code.EngineHelper.NO;
+import static hexlet.code.Engine.RESULT_INDEX;
+import static hexlet.code.Engine.QUESTION_INDEX;
+import static hexlet.code.Engine.TWO;
+import static hexlet.code.Engine.WIN_COUNT;
+import static hexlet.code.Engine.YES;
+import static hexlet.code.Engine.NO;
+import static hexlet.code.Engine.YES_NO_RULES;
+import static hexlet.code.Engine.getRandValue;
 
 public class Even {
+    private static final String EVEN = "even";
     public static void startGame() {
-        Random rand = new Random();
-        String[] results = new String[WIN_COUNT];
-        String[] questions = new String[WIN_COUNT];
-
-
+        String[][] questions = new String[WIN_COUNT][TWO];
         for (int i = 0; i < WIN_COUNT; i++) {
-            int randInt = rand.nextInt(MAX_VALUE);
-            questions[i] = Integer.toString(randInt);
-            results[i] = randInt % 2 == 0 ? YES : NO;
+            int randInt = getRandValue();
+            questions[i][QUESTION_INDEX] = Integer.toString(randInt);
+            questions[i][RESULT_INDEX] = randInt % 2 == 0 ? YES : NO;
         }
-        String rules = "Answer 'yes' if number even otherwise answer 'no'.";
-        Engine engine = new Engine(rules, questions, results);
-        engine.execute();
+        Engine.execute(String.format(YES_NO_RULES, EVEN), questions);
     }
 }
