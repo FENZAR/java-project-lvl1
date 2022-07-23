@@ -32,7 +32,7 @@ public class Gcd {
                 }
             }
         } catch (ArithmeticException e) {
-            return 1;
+            return Math.max(mod1, mod2);
         }
         return mod2;
     }
