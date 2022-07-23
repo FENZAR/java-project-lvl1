@@ -10,7 +10,7 @@ import static hexlet.code.Engine.getRandValue;
 
 public class Gcd {
     private static final String GCD_RULES = "Find the greatest common divisor of given numbers.";
-    private static final String GCD_QUESTION = "%d + %d";
+    private static final String GCD_QUESTION = "%d %d";
     public static void startGame() {
         String[][] questions = new String[WIN_COUNT][TWO];
         for (int i = 0; i < WIN_COUNT; i++) {
