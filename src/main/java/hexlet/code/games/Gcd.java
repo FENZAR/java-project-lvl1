@@ -17,23 +17,15 @@ public class Gcd {
             int randInt1 = getRandValue();
             int randInt2 = getRandValue();
             questions[i][QUESTION_INDEX] = String.format(GCD_QUESTION, randInt1, randInt2);
-            questions[i][RESULT_INDEX] = Integer.toString(getGcd(randInt1, randInt2));
+            questions[i][RESULT_INDEX] = Integer.toString(getGcdByEuclidsAlgorithm(randInt1, randInt2));
         }
         Engine.execute(GCD_RULES, questions);
     }
-    private static int getGcd(int mod1, int mod2) {
-        try {
-            int mod = Math.max(mod1, mod2) % Math.min(mod1, mod2);
-            if (mod != 0) {
-                while (mod > 0) {
-                    mod1 = mod2;
-                    mod2 = mod;
-                    mod = mod1 % mod2;
-                }
-            }
-        } catch (ArithmeticException e) {
-            return Math.max(mod1, mod2);
+
+    private static int getGcdByEuclidsAlgorithm(int mod1, int mod2) {
+        if (mod2 == 0) {
+            return mod1;
         }
-        return mod2;
+        return getGcdByEuclidsAlgorithm(mod2, mod1 % mod2);
     }
 }
