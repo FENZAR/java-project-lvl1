@@ -2,32 +2,28 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Random;
-
-import static hexlet.code.EngineHelper.MAX_VALUE;
-import static hexlet.code.EngineHelper.WIN_COUNT;
+import static hexlet.code.Engine.QUESTION_INDEX;
+import static hexlet.code.Engine.RESULT_INDEX;
+import static hexlet.code.Engine.TWO;
+import static hexlet.code.Engine.WIN_COUNT;
+import static hexlet.code.Engine.getRandValue;
 
 public class Gcd {
+    private static final String GCD_RULES = "Find the greatest common divisor of given numbers.";
+    private static final String GCD_QUESTION = "%d + %d";
     public static void startGame() {
-        Random rand = new Random();
-        String[] results = new String[WIN_COUNT];
-        String[] questions = new String[WIN_COUNT];
+        String[][] questions = new String[WIN_COUNT][TWO];
         for (int i = 0; i < WIN_COUNT; i++) {
-            int randInt1 = rand.nextInt(MAX_VALUE);
-            int randInt2 = rand.nextInt(MAX_VALUE);
-            int min = Math.min(randInt1, randInt2);
-            int max = Math.max(randInt1, randInt2);
-            questions[i] = randInt1 + " " + randInt2;
-            results[i] = Integer.toString(getGcd(min, max));
+            int randInt1 = getRandValue();
+            int randInt2 = getRandValue();
+            questions[i][QUESTION_INDEX] = String.format(GCD_QUESTION, randInt1, randInt2);
+            questions[i][RESULT_INDEX] = Integer.toString(getGcd(randInt1, randInt2));
         }
-        String rules = "Find the greatest common divisor of given numbers.";
-        Engine engine = new Engine(rules, questions, results);
-        engine.execute();
+        Engine.execute(GCD_RULES, questions);
     }
-
-    private static int getGcd(int mod2, int mod1) {
+    private static int getGcd(int mod1, int mod2) {
         try {
-            int mod = mod1 % mod2;
+            int mod = Math.max(mod1, mod2) % Math.min(mod1, mod2);
             if (mod != 0) {
                 while (mod > 0) {
                     mod1 = mod2;
@@ -36,7 +32,7 @@ public class Gcd {
                 }
             }
         } catch (ArithmeticException e) {
-            return 0;
+            return 1;
         }
         return mod2;
     }
